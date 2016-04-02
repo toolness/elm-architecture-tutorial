@@ -12,7 +12,7 @@ type alias Model = Int
 
 -- UPDATE
 
-type Action = Increment | Decrement
+type Action = Increment | Decrement | Reset
 
 update : Action -> Model -> Model
 update action model =
@@ -23,6 +23,8 @@ update action model =
     Decrement ->
       model - 1
 
+    Reset ->
+      0
 
 -- VIEW
 
@@ -32,6 +34,7 @@ view address model =
     [ button [ onClick address Decrement ] [ text "-" ]
     , div [ countStyle ] [ text (toString model) ]
     , button [ onClick address Increment ] [ text "+" ]
+    , button [ onClick address Reset ] [ text "Reset" ]
     ]
 
 
